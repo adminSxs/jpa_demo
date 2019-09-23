@@ -1,0 +1,21 @@
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  application:
+    name: SpringbootDemo
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+filter:
+  urls:
+    - /webjars
+    - /swagger-ui.html
+    - /swagger-resources
+    - /v2/api-docs
+    - /configuration
+    - /account-api/accounts:POST
+    - /account-api/accounts/login:POST

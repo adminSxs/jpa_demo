@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    #连接池的配置信息
+    druid:
+      url: jdbc:log4jdbc:mysql://192.168.1.100:3306/jpa_demo?useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+      driver-class-name: net.sf.log4jdbc.DriverSpy
+      #      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      #password: chen0469
+      password: Chen_0469
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      #连接池监控
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+      web-stat-filter:
+        exclusions:  " *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      connection-properties:
+      stat:
+        mergeSql: true
+        slowSqlMillis: 5000
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    show-sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    database-platform: com.wizlah.es.config.MySQL5DialectWrapper
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://whizhome:wizlah2018@8ef2084bb450.sn.mynetname.net:8761/eureka/
+      healthcheck:
+        enabled: true
+    initial-instance-info-replication-interval-seconds: 0
+    instance-info-replication-interval-seconds: 1
+    registry-fetch-interval-seconds: 1
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    preferIpAddress: true
